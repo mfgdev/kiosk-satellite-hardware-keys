@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "hardware-keys-to-ha",
+  "name": "Hardware Keys to Home Assistant",
+  "version": "1.0.0",
+  "apiVersion": 1,
+  "minAndroidSdk": 24,
+  "minAppVersion": "2026.10.45",
+  "entryClass": "me.jxl.kiosk.plugins.hardwarekeys.HardwareKeysPlugin",
+  "description": "Forwards the hardware buttons of the device, such as the F1 to F4 keys of a Shelly Wall Display XL, to Home Assistant as events. Build automations on the kiosk_satellite_key event, even when the vendor app does not receive the keys.",
+  "author": "mfgdev",
+  "license": "Apache-2.0",
+  "capabilities": [
+    "host.read",
+    "ha"
+  ],
+  "settings": [
+    {
+      "key": "keys",
+      "type": "string",
+      "title": "Keys to forward",
+      "default": "F1,F2,F3,F4",
+      "description": "Comma-separated Android key names without the KEYCODE_ prefix, for example F1,F2,F3,F4 or VOLUME_UP. Leave empty to forward every key."
+    },
+    {
+      "key": "eventType",
+      "type": "string",
+      "title": "Home Assistant event type",
+      "default": "kiosk_satellite_key",
+      "description": "Name of the event fired on the Home Assistant event bus for each press."
+    },
+    {
+      "key": "source",
+      "type": "string",
+      "title": "Source name",
+      "default": "kiosk-satellite",
+      "description": "Sent as event_data.source. Use it to tell several kiosks apart, for example hallway-wall."
+    }
+  ],
+  "commands": []
+}
